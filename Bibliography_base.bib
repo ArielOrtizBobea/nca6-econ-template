@@ -1,0 +1,60 @@
+% =============================================================================
+% Bibliography_base.bib — Project Bibliography
+% =============================================================================
+%
+% Single source of truth for references. Cited from paper/main.tex via
+% \addbibresource{../Bibliography_base.bib} (or copied/linked to paper/references.bib).
+%
+% Style: biblatex + biber, authoryear, maxcitenames=3.
+% See .claude/rules/working-paper-format.md for the citation setup.
+%
+% Five example entries below demonstrate the expected formats. Delete or
+% replace them as you build your bibliography.
+% =============================================================================
+
+@article{example_article,
+  author       = {Lastname, First and Coauthor, Second},
+  title        = {Example Journal Article Title},
+  journal      = {Journal Name},
+  year         = {2025},
+  volume       = {10},
+  number       = {2},
+  pages        = {100--120},
+  doi          = {10.1234/example.doi},
+}
+
+@book{example_book,
+  author       = {Lastname, First},
+  title        = {Example Book Title},
+  publisher    = {Publisher},
+  year         = {2024},
+  address      = {City},
+  isbn         = {978-0-00-000000-0},
+}
+
+@incollection{example_chapter,
+  author       = {Lastname, First},
+  title        = {Example Book Chapter Title},
+  editor       = {Editor, First},
+  booktitle    = {Edited Volume Title},
+  publisher    = {Publisher},
+  year         = {2024},
+  pages        = {45--72},
+}
+
+@techreport{example_workingpaper,
+  author       = {Lastname, First and Coauthor, Second},
+  title        = {Example Working Paper Title},
+  institution  = {Institution / NBER / SSRN},
+  year         = {2025},
+  number       = {WP-2025-001},
+  type         = {Working Paper},
+}
+
+@online{example_online,
+  author       = {Lastname, First},
+  title        = {Example Online Source or Dataset},
+  year         = {2024},
+  url          = {https://example.org/resource},
+  urldate      = {2025-01-15},
+}
