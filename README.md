@@ -44,9 +44,9 @@ The guide assumes no prior experience. It also explains what an anchor is and wh
 
 ## What this template provides
 
-- **Two-axis interview** (`/discover interview`) — captures your econ subfield and your chosen climate-economics slice into an aspect spec.
-- **Bridge anchor search** (`/discover anchor`) — runs the Librarian in Bridge Anchor Mode: anchors weighted by subfield, forward-citation snowball from seed citations, claim-staleness flags, adjacent-subfield surfacing.
-- **Pre-loaded anchors** — seven climate-economics chapters from NCA5 and IPCC AR6 (see [`master_supporting_docs/anchors/anchor-index.md`](master_supporting_docs/anchors/anchor-index.md)). Coauthors can add their own.
+- **Two-axis interview** (`/discover interview`) — captures your econ subfield and your chosen climate-economics slice, and asks which review documents you want to anchor your search on. Saves to an aspect spec.
+- **Bridge anchor search** (`/discover anchor`) — runs the Librarian in Bridge Anchor Mode: weighted use of your anchors, forward-citation snowball from seed citations, claim-staleness flags, adjacent-subfield surfacing.
+- **Coauthor-supplied anchors** — the template does not pre-load a canonical anchor set. You decide which review documents (NCA5 chapters, IPCC AR6 chapters, *Annual Review* surveys, JEL surveys, NBER chapters, *Handbook* volumes) anchor your slice. The interview makes adding them easy; see [`master_supporting_docs/anchors/anchor-index.md`](master_supporting_docs/anchors/anchor-index.md) for examples to consider.
 - **NCA6 chapter scaffold** — `paper/sections/contributions/_template.tex` carries Key Messages + Description of Evidence Base + Major Uncertainties + Description of Confidence + Description of Likelihood + Traceable Accounts. Multi-coauthor chapter shell in `paper/main.tex`.
 - **Worker-critic quality gates** — every creator agent (Librarian, Writer, Coder) has a paired critic. Nothing ships below 80/100. See [`.claude/rules/quality.md`](.claude/rules/quality.md).
 - **General-economics fallback** — `/discover lit [topic]` and the standard research pipeline still work if your task isn't anchor-driven.

@@ -7,198 +7,90 @@
 %
 % Style: biblatex + biber, authoryear, maxcitenames=3.
 %
-% Entries marked `% SHARED-CORE` are part of the canonical NCA6 shared bib.
-% They are synced by scripts/sync-shared-bib.sh — do NOT delete them.
-% Your own additions (no SHARED-CORE marker) are preserved across syncs.
+% The entries below are EXAMPLES corresponding to anchors listed in
+% master_supporting_docs/anchors/anchor-index.md. They are not required —
+% delete the ones you don't use, edit the ones you do, and add your own.
 %
-% Anchor citations (NCA5, IPCC AR6, SR1.5) are listed first. Seminal
-% climate-economics references follow. See the Bridge Reference Table in
-% .claude/references/domain-profile.md for which subfields cite which works.
+% The five IPCC AR6 entries have been verified (author lists, DOIs, titles).
+% Other reference works that economists commonly cite as anchors (NCA5 Ch.19
+% Economics, IPCC SR1.5, Handbook chapters, JEL surveys) should be added by
+% you when you choose them — using `/discover interview` is the easiest path.
+%
+% scripts/sync-shared-bib.sh can pull a shared bib from a canonical URL once
+% the lead coauthor configures one. Until then it's a placeholder.
 % =============================================================================
 
 % =============================================================================
-% Anchors — NCA5 + IPCC AR6 + SR1.5
+% Example anchor entries — IPCC AR6 (verified citations)
+% Keep, edit, or delete based on which anchors you actually use.
 % =============================================================================
 
-% SHARED-CORE — do not delete
-@incollection{nca5_ch19_economics,
-  author       = {Hsiang, Solomon and Oliva, Paulina and Walker, Reed and {others}},
-  title        = {Economics},
-  editor       = {Crimmins, A. R. and others},
-  booktitle    = {Fifth National Climate Assessment},
-  publisher    = {U.S. Global Change Research Program},
-  address      = {Washington, DC, USA},
-  year         = {2023},
-  chapter      = {19},
-  url          = {https://nca2023.globalchange.gov/chapter/19/},
-  urldate      = {2026-05-22},
-  note         = {Verify chapter authorship and exact title on USGCRP site before citing in final draft.},
-}
-
-% SHARED-CORE — do not delete
 @incollection{ipcc_ar6_wg2_ch16_keyrisks,
-  author       = {O'Neill, Brian and {others}},
+  author       = {O'Neill, Brian and van Aalst, Maarten and Zaiton Ibrahim, Zelina and Berrang Ford, Lea and Bhadwal, Suruchi and Buhaug, Halvard and Diaz, Delavane and Frieler, Katja and Garschagen, Matthias and Magnan, Alexandre and Midgley, Guy and Mirzabaev, Alisher and Thomas, Adelle and Warren, Rachel},
   title        = {Key Risks Across Sectors and Regions},
-  editor       = {P{\"o}rtner, H.-O. and others},
-  booktitle    = {Climate Change 2022: Impacts, Adaptation and Vulnerability. Contribution of Working Group II to the Sixth Assessment Report of the IPCC},
+  editor       = {P{\"o}rtner, H.-O. and Roberts, D. C. and Tignor, M. and Poloczanska, E. S. and Mintenbeck, K. and Aleg{\'i}a, A. and Craig, M. and Langsdorf, S. and L{\"o}schke, S. and M{\"o}ller, V. and Okem, A. and Rama, B.},
+  booktitle    = {Climate Change 2022: Impacts, Adaptation and Vulnerability. Contribution of Working Group II to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change},
   publisher    = {Cambridge University Press},
+  address      = {Cambridge, UK and New York, NY, USA},
   year         = {2022},
-  chapter      = {16},
+  pages        = {2411--2538},
+  doi          = {10.1017/9781009325844.025},
   url          = {https://www.ipcc.ch/report/ar6/wg2/chapter/chapter-16/},
-  urldate      = {2026-05-22},
 }
 
-% SHARED-CORE — do not delete
 @incollection{ipcc_ar6_wg2_ch17_decisions,
-  author       = {New, Mark and {others}},
+  author       = {New, Mark and Reckien, Diana and Viner, David and Adler, Carolina and Cheong, So-Min and Conde, Cecilia and Constable, Andrew and Coughlan de Perez, Erin and Lammel, Annamaria and Mechler, Reinhard and Orlove, Ben and Solecki, William},
   title        = {Decision-Making Options for Managing Risk},
-  editor       = {P{\"o}rtner, H.-O. and others},
-  booktitle    = {Climate Change 2022: Impacts, Adaptation and Vulnerability. Contribution of Working Group II to the Sixth Assessment Report of the IPCC},
+  editor       = {P{\"o}rtner, H.-O. and Roberts, D. C. and others},
+  booktitle    = {Climate Change 2022: Impacts, Adaptation and Vulnerability. Contribution of Working Group II to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change},
   publisher    = {Cambridge University Press},
+  address      = {Cambridge, UK and New York, NY, USA},
   year         = {2022},
-  chapter      = {17},
+  doi          = {10.1017/9781009325844.026},
   url          = {https://www.ipcc.ch/report/ar6/wg2/chapter/chapter-17/},
-  urldate      = {2026-05-22},
 }
 
-% SHARED-CORE — do not delete
 @incollection{ipcc_ar6_wg3_ch3_pathways,
-  author       = {Riahi, Keywan and {others}},
+  author       = {Riahi, Keywan and Schaeffer, Roberto and Arango, Jacobo and Calvin, Katherine and Guivarch, C{\'e}line and Hasegawa, Tomoko and Jiang, Kejun and Kriegler, Elmar and Matthews, Robert and Peters, Glen P. and Rao, Anand and Robertson, Simon and Sebbit, Adam Mohammed and Steinberger, Julia and Tavoni, Massimo and van Vuuren, Detlef P.},
   title        = {Mitigation Pathways Compatible with Long-Term Goals},
-  editor       = {Shukla, P. R. and others},
-  booktitle    = {Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report of the IPCC},
+  editor       = {Shukla, P. R. and Skea, J. and others},
+  booktitle    = {Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change},
   publisher    = {Cambridge University Press},
+  address      = {Cambridge, UK and New York, NY, USA},
   year         = {2022},
-  chapter      = {3},
+  doi          = {10.1017/9781009157926.005},
   url          = {https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-3/},
-  urldate      = {2026-05-22},
 }
 
-% SHARED-CORE — do not delete
 @incollection{ipcc_ar6_wg3_ch13_policies,
-  author       = {Lecocq, Franck and {others}},
+  author       = {Dubash, Navroz K. and Mitchell, Catherine and Boasson, Elin Lerum and Borbor-C{\'o}rdova, Mercy J. and Fifita, Solomone and Haites, Erik and Jaccard, Mark and Jotzo, Frank and Naidoo, Sasha and Romero-Lankao, Patricia and Shen, Wei and Shlapak, Mykola and Wu, Libo},
   title        = {National and Sub-National Policies and Institutions},
-  editor       = {Shukla, P. R. and others},
-  booktitle    = {Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report of the IPCC},
+  editor       = {Shukla, P. R. and Skea, J. and others},
+  booktitle    = {Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change},
   publisher    = {Cambridge University Press},
+  address      = {Cambridge, UK and New York, NY, USA},
   year         = {2022},
-  chapter      = {13},
+  doi          = {10.1017/9781009157926.015},
   url          = {https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-13/},
-  urldate      = {2026-05-22},
 }
 
-% SHARED-CORE — do not delete
 @incollection{ipcc_ar6_wg3_ch15_finance,
-  author       = {Kreibiehl, Sonia and {others}},
+  author       = {Kreibiehl, Silvia and Yong Jung, Tae and Battiston, Stefano and Carvajal, Pablo Esteban and Clapp, Christa and Dasgupta, Dipak and Dube, Nokuthula and Jachnik, Rapha{\"e}l and Morita, Kanako and Samargandi, Nahla and Williams, Mariama},
   title        = {Investment and Finance},
-  editor       = {Shukla, P. R. and others},
-  booktitle    = {Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report of the IPCC},
+  editor       = {Shukla, P. R. and Skea, J. and others},
+  booktitle    = {Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change},
   publisher    = {Cambridge University Press},
+  address      = {Cambridge, UK and New York, NY, USA},
   year         = {2022},
-  chapter      = {15},
+  doi          = {10.1017/9781009157926.017},
   url          = {https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-15/},
-  urldate      = {2026-05-22},
-}
-
-% SHARED-CORE — do not delete
-@book{ipcc_sr15_2018,
-  editor       = {Masson-Delmotte, V. and others},
-  title        = {Global Warming of 1.5{\textdegree}C. An IPCC Special Report on the impacts of global warming of 1.5{\textdegree}C above pre-industrial levels and related global greenhouse gas emission pathways},
-  publisher    = {Cambridge University Press},
-  year         = {2018},
-  url          = {https://www.ipcc.ch/sr15/},
-  urldate      = {2026-05-22},
 }
 
 % =============================================================================
-% Foundational climate-economics references
-% (illustrative seed — coauthors will add many more via /discover anchor)
-% =============================================================================
-
-% SHARED-CORE — do not delete
-@article{nordhaus_dice_1992,
-  author       = {Nordhaus, William D.},
-  title        = {An Optimal Transition Path for Controlling Greenhouse Gases},
-  journal      = {Science},
-  year         = {1992},
-  volume       = {258},
-  number       = {5086},
-  pages        = {1315--1319},
-  note         = {Seed reference for the DICE integrated assessment model lineage.},
-}
-
-% SHARED-CORE — do not delete
-@article{dell_jones_olken_jel2014,
-  author       = {Dell, Melissa and Jones, Benjamin F. and Olken, Benjamin A.},
-  title        = {What Do We Learn from the Weather? The New Climate-Economy Literature},
-  journal      = {Journal of Economic Literature},
-  year         = {2014},
-  volume       = {52},
-  number       = {3},
-  pages        = {740--798},
-  doi          = {10.1257/jel.52.3.740},
-  note         = {Foundational survey of the panel climate-econ literature.},
-}
-
-% SHARED-CORE — do not delete
-@article{burke_hsiang_miguel_nature2015,
-  author       = {Burke, Marshall and Hsiang, Solomon M. and Miguel, Edward},
-  title        = {Global Non-Linear Effect of Temperature on Economic Production},
-  journal      = {Nature},
-  year         = {2015},
-  volume       = {527},
-  pages        = {235--239},
-  doi          = {10.1038/nature15725},
-}
-
-% SHARED-CORE — do not delete
-@article{carleton_etal_qje2022,
-  author       = {Carleton, Tamma and {Jina, Amir} and others},
-  title        = {Valuing the Global Mortality Consequences of Climate Change Accounting for Adaptation Costs and Benefits},
-  journal      = {Quarterly Journal of Economics},
-  year         = {2022},
-  volume       = {137},
-  number       = {4},
-  pages        = {2037--2105},
-  doi          = {10.1093/qje/qjac020},
-  note         = {Verify exact author list and DOI.},
-}
-
-% SHARED-CORE — do not delete
-@article{hsiang_oliva_walker_nber2019,
-  author       = {Hsiang, Solomon and Oliva, Paulina and Walker, Reed},
-  title        = {The Distribution of Environmental Damages},
-  journal      = {Review of Environmental Economics and Policy},
-  year         = {2019},
-  volume       = {13},
-  number       = {1},
-  pages        = {83--103},
-  doi          = {10.1093/reep/rey024},
-}
-
-% SHARED-CORE — do not delete
-@article{graff_zivin_neidell_jle2014,
-  author       = {Graff Zivin, Joshua and Neidell, Matthew},
-  title        = {Temperature and the Allocation of Time: Implications for Climate Change},
-  journal      = {Journal of Labor Economics},
-  year         = {2014},
-  volume       = {32},
-  number       = {1},
-  pages        = {1--26},
-  doi          = {10.1086/671766},
-}
-
-% SHARED-CORE — do not delete
-@article{deryugina_hsiang_nber2014,
-  author       = {Deryugina, Tatyana and Hsiang, Solomon M.},
-  title        = {Does the Environment Still Matter? Daily Temperature and Income in the United States},
-  journal      = {NBER Working Paper},
-  year         = {2014},
-  number       = {20750},
-  url          = {https://www.nber.org/papers/w20750},
-}
-
-% =============================================================================
-% Your own bibliography starts below. Add your subfield's references here.
-% Entries without a `% SHARED-CORE` marker are preserved across `sync-shared-bib.sh` runs.
+% Your bibliography starts below.
+%
+% Add the anchors you actually use, plus the papers your bridge search
+% surfaces. The librarian appends entries to this file when you run
+% /discover anchor — entries it cannot verify are marked with `% UNVERIFIED`
+% for you to check.
 % =============================================================================

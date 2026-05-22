@@ -23,7 +23,7 @@ An anchor is a review-style document — typically a chapter from NCA5, IPCC AR6
 4. **Confidence/likelihood vocabulary** (NCA/IPCC standard, required in NCA6)
 5. **Scope frame** — what's in and out
 
-The template ships with seven pre-loaded climate-economics anchors (NCA5 Ch.19, IPCC AR6 WG2 Ch.16/17, WG3 Ch.3/13/15, IPCC SR1.5). You can add subfield-specific anchors (an NBER review, a *JEL* survey, an *Annual Review of Resource Economics* article) by appending to `master_supporting_docs/anchors/anchor-index.md`.
+The template does **not** ship with a pre-loaded anchor set — you decide which review documents anchor your slice. The interview (next part) walks you through choosing. Examples you might consider: chapters of NCA5 (Ch.19 Economics) and IPCC AR6 (WG2 Ch.16/17, WG3 Ch.3/13/15), IPCC SR1.5, *Annual Review of Resource Economics* surveys, *Journal of Economic Literature* surveys, NBER review chapters, *Handbook of Environmental Economics* volumes. `master_supporting_docs/anchors/anchor-index.md` lists more examples.
 
 ---
 
@@ -130,8 +130,7 @@ Claude will have a short conversation with you about:
 - **Your econ subfield and methods** (one or two papers that represent your recent work)
 - **The slice of climate-economics you want to contribute** to this chapter
 - **What's in vs. out** of your scope (so we don't duplicate or leave gaps)
-- **Anchor alignment** — which of the pre-loaded anchors are most relevant
-- **Coauthor-supplied anchors** — any NBER reviews, *JEL* surveys, or *Annual Review* articles you want to add
+- **Your anchors** — which review documents (NCA5 chapters, IPCC AR6 chapters, *Annual Review* articles, *JEL* surveys, NBER reviews, *Handbook* chapters) define the climate-economics scope for your contribution. You can give URLs or drop PDFs into `master_supporting_docs/anchors/cache/`.
 - **Specific surfacing requests** — anything you suspect is missing or stale
 
 After 6–8 exchanges, Claude proposes an "aspect spec." Read it carefully. If something's off, say so — Claude revises. When you're happy:

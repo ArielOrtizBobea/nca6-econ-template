@@ -110,17 +110,13 @@ cd paper && latexmk -c
 
 ## Anchor Quick Reference
 
-The template ships with 7 pre-loaded climate-economics anchors in `master_supporting_docs/anchors/anchor-index.md`:
+Anchors are coauthor-supplied — the template does NOT pre-load a canonical anchor set. You decide which review documents define the climate-economics scope for your contribution.
 
-1. NCA5 Ch.19 Economic Impacts
-2. IPCC AR6 WG2 Ch.16 Key Risks Across Sectors and Regions
-3. IPCC AR6 WG2 Ch.17 Decision-Making Options for Managing Risk
-4. IPCC AR6 WG3 Ch.3 Mitigation Pathways
-5. IPCC AR6 WG3 Ch.13 National and Sub-National Policies
-6. IPCC AR6 WG3 Ch.15 Investment and Finance
-7. IPCC SR1.5
+The easy path: run `/discover interview`. It asks which review documents you want to anchor your search on, and appends them to `master_supporting_docs/anchors/anchor-index.md` automatically.
 
-You can add subfield-specific anchors (NBER reviews, JEL surveys, *Annual Review* articles) by appending to the "Coauthor-Supplied Anchors" table in `anchor-index.md`. `/discover interview` also asks for them.
+Manual path: open `master_supporting_docs/anchors/anchor-index.md`, add rows to the "Your Anchors" table (citation key, source, scope, URL or cache path), and add matching BibTeX entries to `Bibliography_base.bib`.
+
+Examples of review documents an economist contributing to NCA6 might use as anchors (in `anchor-index.md`): chapters of NCA5 and IPCC AR6 WG2/WG3, IPCC SR1.5, *Annual Review of Resource Economics* surveys, *Journal of Economic Literature* surveys, NBER review chapters, *Handbook of Environmental Economics* volumes.
 
 ---
 

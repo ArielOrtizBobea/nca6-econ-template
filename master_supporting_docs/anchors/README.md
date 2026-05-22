@@ -6,7 +6,7 @@ This directory holds the **anchor documents** that drive bridge-aware literature
 
 ## What is an anchor?
 
-An anchor is an authoritative review-style document — typically a chapter from a major scientific assessment (NCA5, IPCC AR6, IPCC SR1.5) — that serves five jobs for your literature search:
+An anchor is an authoritative review-style document — typically a chapter from NCA5, IPCC AR6, a *Handbook* volume, a *Journal of Economic Literature* survey, an *Annual Review* article, or an NBER review — that serves five jobs for your literature search:
 
 1. **Prior state of knowledge.** It tells you what the field had agreed at the cutoff date.
 2. **Seed citations.** Its bibliography is a curated set of foundational papers — your search starts from there rather than from a blank query.
@@ -18,27 +18,24 @@ An anchor is an authoritative review-style document — typically a chapter from
 
 ---
 
-## Pre-loaded defaults
+## Coauthor-supplied: you decide
 
-`anchor-index.md` ships with seven climate-economics anchors pre-listed: the NCA5 economics chapter, four IPCC AR6 economics-relevant chapters (WG2 Ch.16/17, WG3 Ch.3/13/15), and the IPCC SR1.5 special report. These cover the main framings any economist contributing to NCA6 will need.
+This template does **not** ship with a canonical list of anchors. Different coauthors will anchor on different review documents depending on their econ subfield and chosen climate-economics slice. A labor economist might anchor on an *Annual Review of Resource Economics* article on environment-and-labor plus IPCC WG2 Ch.16. A trade economist might anchor on a *JEL* survey of border-adjustment carbon policy plus IPCC WG3 Ch.13. You know your subfield — pick the anchors that frame your contribution.
 
-You do not need to fetch them manually. The first time you run `/discover anchor`, the URLs are resolved and cached in `cache/` (gitignored).
+The file `anchor-index.md` includes a few **examples** of review documents an economist contributing to NCA6 might choose. They are not loaded automatically — you decide which (if any) to use, and you add your own.
 
 ---
 
-## Adding your own anchors
+## Two ways to add anchors
 
-Some coauthors will want to anchor on additional documents that are closer to their subfield — e.g., a *Handbook of Environmental Economics* chapter, an *Annual Review of Resource Economics* article, an NBER survey, or a regional assessment.
+**Conversational** (recommended for first-timers):
+Run `/discover interview`. The interview includes a question about which review documents you want to anchor your search on. Your choices are appended to `anchor-index.md` automatically.
 
-To add an anchor:
-
+**Manual:**
 1. Open `anchor-index.md`.
-2. Add a row to the "Coauthor-Supplied Anchors" table with: a citation key (snake_case), the source (publisher, year), a one-line scope description, the document's cutoff date, and a stable URL.
-3. If the document is paywalled or has no stable URL, drop the PDF into `cache/` and reference the cache path.
-
-The next `/discover anchor` run will pick up your additions automatically.
-
-You can also add anchors interactively — `/discover interview` will ask whether you want to suggest additional anchors before producing your aspect spec.
+2. Add a row to the "Your Anchors" table with citation key, source, scope, cutoff date, and URL.
+3. Add a matching BibTeX entry to `Bibliography_base.bib`.
+4. If the anchor is a paywalled PDF, drop the PDF into `cache/` and reference the cache path instead of a URL.
 
 ---
 
@@ -47,8 +44,8 @@ You can also add anchors interactively — `/discover interview` will ask whethe
 ```
 master_supporting_docs/anchors/
 ├── README.md              # This file
-├── anchor-index.md        # Canonical list of anchors (pre-loaded + coauthor-supplied)
-└── cache/                 # Fetched anchor content (gitignored)
+├── anchor-index.md        # Your anchors + examples to consider
+└── cache/                 # Fetched or local anchor PDFs (gitignored)
     └── .gitkeep
 ```
 
@@ -58,6 +55,4 @@ The `cache/` directory is gitignored so coauthors don't bloat the repo by checki
 
 ## When anchors aren't enough
 
-Some lit searches benefit from going beyond the anchor's reach — discovering papers in subfields the anchor underweights, or methods literature not yet integrated into climate assessments. That's exactly what bridge mode is designed to surface: the librarian-critic flags when the search hugs the anchor too closely without bringing in subfield-native literature.
-
-If you find the anchor set isn't producing useful breadth for your topic, add more anchors (above) or fall back to standalone `/discover lit [topic]` for a non-anchored search.
+Some lit searches benefit from going beyond the anchor's reach — discovering papers in subfields the anchor underweights, or methods literature not yet integrated into climate assessments. The librarian-critic flags when the search hugs the anchor too closely. If anchors aren't producing useful breadth, add more anchors or fall back to standalone `/discover lit [topic]` for a non-anchored search.

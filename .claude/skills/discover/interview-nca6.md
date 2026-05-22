@@ -48,11 +48,19 @@ After their reply, probe as needed:
 
 (If they don't know the anchors yet, give a one-line description of each and let them point.)
 
-### Anchor augmentation (1 question)
+### Anchors (1–2 questions — important)
 
-"Beyond the pre-loaded anchors (NCA5 Ch.19, IPCC AR6 WG2 Ch.16/17, WG3 Ch.3/13/15, SR1.5), are there review documents in your subfield you want to add as anchors? Examples: a *Handbook of Environmental Economics* chapter, a JEL survey, an *Annual Review of Resource Economics* article, an NBER review."
+This template does **not** ship with pre-loaded anchors. The coauthor decides which review documents define the climate-economics scope for their contribution. Ask:
 
-If yes, capture: full citation, why it matters, URL or cache path.
+"Which review documents would you anchor your literature search on? An anchor is a curated review of the prior state of knowledge — typically a chapter from NCA5, IPCC AR6 (WG2 or WG3), an *Annual Review of Resource Economics* article, a *Journal of Economic Literature* survey, an NBER chapter, or a *Handbook* volume in your subfield. Pick the documents that frame what's known in your slice. For each, share a URL or tell me which PDF you'll drop into `master_supporting_docs/anchors/cache/`."
+
+If the coauthor isn't sure, offer concrete suggestions calibrated to their subfield (using the Bridge Reference Table in `.claude/references/domain-profile.md`). For example, to a labor economist: "Possible anchors include the labor sections of NCA5 Ch.19 (Economics) and IPCC AR6 WG2 Ch.16 (Key Risks). An *Annual Review of Resource Economics* survey by Graff Zivin and colleagues on environment-and-labor also functions well as an anchor if you've found it useful." Let them confirm or substitute.
+
+For each anchor confirmed, capture: citation key (snake_case), source (publisher, year), one-line scope description, cutoff date, URL or cache path.
+
+After the interview, append each anchor as a row in `master_supporting_docs/anchors/anchor-index.md` (under "Your Anchors") and add a corresponding BibTeX entry to `Bibliography_base.bib`.
+
+**At least one anchor is required** before `/discover anchor` can run. If the coauthor genuinely doesn't have one in mind, suggest they start with a single broad anchor (e.g., a recent *Annual Review* in their subfield) and add more later as the bridge search reveals gaps.
 
 ### Closing (1 question)
 

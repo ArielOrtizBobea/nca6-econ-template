@@ -15,9 +15,10 @@ If no `aspect_spec_[coauthor].md` exists in `quality_reports/`, the coauthor nee
 ## Pre-flight checks (do these first, in this order)
 
 1. **Aspect spec exists?** Look for `quality_reports/aspect_spec_*.md`. If multiple, take the most recently modified, but report which one you're using. If none, stop and tell the coauthor:
-   > No aspect spec found. Run `/discover interview` first — that elicits your subfield and chosen climate-economics slice and saves it to `quality_reports/aspect_spec_[coauthor].md`. Then re-run `/discover anchor`.
+   > No aspect spec found. Run `/discover interview` first — that elicits your subfield and chosen climate-economics slice (and asks for your anchors) and saves it to `quality_reports/aspect_spec_[coauthor].md`. Then re-run `/discover anchor`.
 
-2. **Anchor index exists?** Read `master_supporting_docs/anchors/anchor-index.md`. If missing, halt and tell the coauthor the template is misconfigured (this file ships pre-populated).
+2. **Anchor index has actual anchors?** Read `master_supporting_docs/anchors/anchor-index.md`. The template ships with the "Your Anchors" table empty and an "Examples to Consider" section that is illustrative only. Check that the "Your Anchors" table has at least one row populated. If empty, halt and tell the coauthor:
+   > Your `anchor-index.md` has no anchors in the "Your Anchors" table. Anchors are coauthor-supplied — the template doesn't pick them for you. Either run `/discover interview` (which asks for anchors conversationally) or open `anchor-index.md` and add at least one row to the "Your Anchors" table.
 
 3. **Domain profile exists?** Read `.claude/references/domain-profile.md` for the Bridge Reference Table and NCA confidence/likelihood vocabulary.
 
@@ -73,21 +74,16 @@ CONSTRAINTS:
 
 ## Anchor weighting heuristic
 
-The Librarian decides anchor weights, but here's the guide it should follow (also documented in the Bridge Reference Table in `domain-profile.md`):
+Because anchors are coauthor-supplied, the coauthor has already done the first weighting — every anchor in `anchor-index.md` is one they chose as relevant. The Librarian's job is to weight *among* the coauthor's anchors, prioritizing those whose scope most closely matches the slice in the aspect spec.
 
-| Coauthor subfield | High-weight anchors |
-|-------------------|---------------------|
-| Labor | NCA5 Ch.19 (labor sections); IPCC AR6 WG2 Ch.16 (labor risks) |
-| Health | NCA5 Ch.19 (health & welfare valuation); IPCC AR6 WG2 Ch.16 |
-| Trade | IPCC AR6 WG3 Ch.13 (cross-border policy); WG3 Ch.15 (finance flows) |
-| Public / policy | IPCC AR6 WG3 Ch.13 (national/sub-national policies); NCA5 Ch.19 |
-| IO / regulation | IPCC AR6 WG3 Ch.13; IPCC AR6 WG3 Ch.15 (sectoral) |
-| Macro | IPCC AR6 WG3 Ch.3 (mitigation pathways, IAMs); NCA5 Ch.19 (aggregate impacts) |
-| Development | IPCC AR6 WG2 Ch.16 (regional risk); SR1.5; NCA5 Ch.19 (cross-region) |
-| Environmental | NCA5 Ch.19; IPCC AR6 WG2 Ch.16; WG3 Ch.3 |
-| Finance | IPCC AR6 WG3 Ch.15 (investment, capital flows, transition risk) |
+If the coauthor has provided multiple anchors, the Librarian should:
 
-The coauthor's own supplied anchors (in the "Coauthor-Supplied Anchors" section of `anchor-index.md`) should generally be weighted highest — they were chosen as most-relevant by the coauthor.
+1. Read each anchor's stated scope (from the table in `anchor-index.md`).
+2. Score each on a 1–5 scale of relevance to the aspect-spec slice.
+3. Document the weighting in `bridge_review.md` so the coauthor can challenge it.
+4. If the coauthor has provided only one anchor, use it at weight 5 — no comparative weighting needed.
+
+The Bridge Reference Table in `domain-profile.md` lists *connection points* between econ subfields and climate-economics — useful as a sanity check that the coauthor's anchors actually engage their subfield, not as a list of mandatory anchors.
 
 ---
 
