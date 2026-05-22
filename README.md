@@ -10,8 +10,8 @@ A Claude Code scaffold for **economists writing literature-review contributions 
 
 ```bash
 # Fork the template and clone your fork
-gh repo fork ArielOrtizBobea/economics-research-template --clone
-cd economics-research-template
+gh repo fork ArielOrtizBobea/nca6-econ-template --clone
+cd nca6-econ-template
 
 # Open Claude Code
 claude

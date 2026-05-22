@@ -88,8 +88,8 @@ sudo apt install texlive-xetex texlive-fonts-extra texlive-latex-extra latexmk
 ## Part 3 — Fork and open the repo
 
 ```bash
-gh repo fork ArielOrtizBobea/economics-research-template --clone
-cd economics-research-template
+gh repo fork ArielOrtizBobea/nca6-econ-template --clone
+cd nca6-econ-template
 ```
 
 The first time you run `claude` inside the repo, it reads `CLAUDE.md` automatically.
