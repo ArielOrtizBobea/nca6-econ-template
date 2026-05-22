@@ -2,6 +2,19 @@
 
 All LaTeX papers generated or reviewed by this system must conform to the standard economics working paper format. This rule applies to the writer, writer-critic, and verifier agents.
 
+## Coexistence with NCA6 Chapter Format
+
+This template ships with two parallel paper formats:
+
+1. **Working paper format** — the standard economics format defined in this file. Used for journal submissions, NBER/SSRN working papers, and standalone analyses.
+2. **NCA6 chapter format** — defined in `paper/preambles/nca6-preamble.tex`. Used for NCA6 chapter contributions (Key Messages + Evidence Base + Uncertainties + Confidence + Likelihood + Traceable Accounts).
+
+The format is chosen by `paper/main.tex`. To use the NCA6 format, `main.tex` does `\input{nca6-preamble.tex}` (the default for this template). To switch to working-paper format, replace that line with the preamble below.
+
+NCA6-specific content invariants (INV-22 through INV-27) apply only when the NCA6 preamble is loaded. The writer-critic detects which preamble is in use by checking for the `keymessage` environment or `\confidencedesc` command in the source. The `biblatex` + `biber` rule (INV-9), `hyperref` ordering (INV-10), and bibliography conventions apply to both formats.
+
+A coauthor may also produce a companion working paper for their NCA6 contribution (e.g., to publish more detailed analysis separately). In that case, set up `paper/main_workingpaper.tex` alongside `main.tex` and use the working-paper preamble below — they coexist in the same repo.
+
 ## Document Class and Layout
 
 - `\documentclass[12pt]{article}`

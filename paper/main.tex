@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+
+% Shared NCA6 preamble — confidence/likelihood, KM boxes, biblatex, etc.
+\input{nca6-preamble.tex}
+
+% ====== Chapter Metadata ======
+% Lead coauthor: fill in the chapter title and author block per fork.
+\title{NCA6 Chapter [NN]: [Chapter Title] \\
+       \large [Subtitle, if any]}
+
+\author{
+  [Lead Coauthor]\thanks{Affiliation, email.} \quad
+  [Coauthor 2]\thanks{Affiliation, email.} \quad
+  [Coauthor 3]\thanks{Affiliation, email.}
+}
+
+\date{Working draft — \today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent \singlespacing
+[Chapter-level abstract — 150 words or fewer. Summarize the chapter's central
+findings across all coauthor contributions. The lead coauthor typically writes
+this last, after individual contributions are drafted.]
+\end{abstract}
+
+\vspace{1em}
+\noindent \textbf{JEL Codes:} [e.g., Q54, Q58, H23, J22]
+
+\vspace{0.5em}
+\noindent \textbf{Keywords:} climate change, economic impacts, [add chapter-specific keywords]
+
+\newpage
+\setcounter{page}{1}
+
+% ============================================================
+% Executive Summary
+% ============================================================
+\input{sections/00_executive_summary.tex}
+
+% ============================================================
+% Coauthor Contributions
+% ============================================================
+%
+% Each contribution lives in paper/sections/contributions/[name].tex.
+% Add an \input{} line below as each contribution comes in.
+% A starter template is at paper/sections/contributions/_template.tex.
+%
+% \input{sections/contributions/labor_supply.tex}
+% \input{sections/contributions/health_welfare.tex}
+% \input{sections/contributions/trade_flows.tex}
+% \input{sections/contributions/[your_topic].tex}
+
+% Placeholder until contributions are added
+\section*{[Awaiting Coauthor Contributions]}
+Per-coauthor sections will appear here once contributions are drafted. See
+\texttt{paper/sections/contributions/README.md} for instructions.
+
+% ============================================================
+% Bibliography
+% ============================================================
+\clearpage
+\small \printbibliography
+
+\end{document}

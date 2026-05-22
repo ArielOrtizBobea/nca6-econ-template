@@ -1,0 +1,157 @@
+% nca6-preamble.tex — Shared preamble for NCA6 chapter contributions
+%
+% This preamble extends the working-paper format with NCA6-specific
+% environments: Key Messages, Description of Evidence Base, Major
+% Uncertainties, Description of Confidence, Description of Likelihood,
+% and Traceable Accounts.
+%
+% Loaded by paper/main.tex via \input{nca6-preamble.tex}.
+% TEXINPUTS in paper/latexmkrc resolves this relative to paper/.
+
+% ====== Page Layout and Basic Formatting ======
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage{setspace}
+\onehalfspacing % NCA convention — chapter, not double-spaced manuscript
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0pt}
+
+% ====== Typography and Fonts ======
+% This preamble assumes XeLaTeX (see paper/latexmkrc).
+% fontspec handles unicode natively — coauthors can paste em-dashes,
+% en-dashes, and accented characters directly into source files.
+% Default font is Latin Modern (loaded automatically by fontspec).
+\usepackage{fontspec}
+\usepackage{microtype}
+
+% ====== Section Styling ======
+\usepackage{titlesec}
+\usepackage[title]{appendix}
+
+% ====== Math Packages ======
+\usepackage{amssymb, amsmath, amsfonts, mathtools}
+
+% ====== Tables and Figures ======
+\usepackage{array, booktabs}
+\usepackage[flushleft]{threeparttable}
+\usepackage{graphicx, subcaption}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, justification=justified}
+\usepackage{float}
+
+% ====== Color Definitions for IPCC Confidence/Likelihood ======
+\usepackage{xcolor}
+\definecolor{ncaazure}{RGB}{0, 87, 158}
+\definecolor{ncalightblue}{RGB}{220, 235, 248}
+\definecolor{ncadarkblue}{RGB}{0, 51, 102}
+
+% Confidence levels — IPCC AR6 / NCA standard
+\definecolor{conf-veryhigh}{RGB}{8, 48, 107}
+\definecolor{conf-high}{RGB}{33, 113, 181}
+\definecolor{conf-medium}{RGB}{107, 174, 214}
+\definecolor{conf-low}{RGB}{198, 219, 239}
+
+% Likelihood — same intensity ladder, different hue
+\definecolor{like-virtcert}{RGB}{74, 20, 134}
+\definecolor{like-verylikely}{RGB}{106, 81, 163}
+\definecolor{like-likely}{RGB}{158, 154, 200}
+
+% ====== Boxes for Key Messages and Call-Outs ======
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+% Key Message box
+\newtcolorbox{keymessage}[2][]{
+  enhanced,
+  colback=ncalightblue,
+  colframe=ncaazure,
+  fonttitle=\bfseries,
+  title={Key Message: #2},
+  breakable,
+  before skip=12pt,
+  after skip=12pt,
+  #1
+}
+
+% Confidence/Likelihood inline tags
+% Usage: \confidence{very high} or \confidence{high} etc.
+\newcommand{\confidence}[1]{%
+  \begingroup
+  \def\tmp{#1}%
+  \ifx\tmp\veryhigh\colorbox{conf-veryhigh}{\textcolor{white}{\strut\,Very High Confidence\,}}%
+  \else\ifx\tmp\high\colorbox{conf-high}{\textcolor{white}{\strut\,High Confidence\,}}%
+  \else\ifx\tmp\medium\colorbox{conf-medium}{\strut\,Medium Confidence\,}%
+  \else\ifx\tmp\low\colorbox{conf-low}{\strut\,Low Confidence\,}%
+  \else\textbf{[Confidence: #1]}\fi\fi\fi\fi
+  \endgroup
+}
+\def\veryhigh{very high}\def\high{high}\def\medium{medium}\def\low{low}
+
+% Usage: \likelihood{very likely} etc.
+\newcommand{\likelihood}[1]{\textit{\small[Likelihood: #1]}}
+
+% Evidence/Uncertainty/Traceable Account headings (per-contribution)
+\newcommand{\evidencebase}{\paragraph{Description of Evidence Base.}}
+\newcommand{\uncertainties}{\paragraph{Major Uncertainties.}}
+\newcommand{\confidencedesc}{\paragraph{Description of Confidence.}}
+\newcommand{\likelihooddesc}{\paragraph{Description of Likelihood.}}
+\newcommand{\traceableaccount}{\paragraph{Traceable Account.}}
+
+% Contribution header — prefixes each coauthor's section
+\newcommand{\contribution}[2]{%
+  \section{#1}%
+  \noindent\textit{Contributor: #2}\par\vspace{0.5em}%
+}
+
+% ====== List Formatting ======
+\usepackage{enumitem}
+
+% ====== Bibliography ======
+\usepackage{xurl}
+\usepackage[backend=biber,
+            style=authoryear,
+            maxcitenames=3,
+            mincitenames=1,
+            maxbibnames=99,
+            giveninits=true,
+            uniquename=false,
+            uniquelist=true,
+            dashed=false,
+            urldate=long,
+            url=true,
+            natbib=true]{biblatex}
+\addbibresource{Bibliography_base.bib}
+
+% Citation color
+\definecolor{citationcolor}{RGB}{0, 127, 255}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\DeclareCiteCommand{\cite}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[bibhyperref]{\color{citationcolor}\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[bibhyperref]{\color{citationcolor}\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% URL bleeding fixes
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\setcounter{biburlnumpenalty}{9000}
+
+% ====== Hyperref + Cleveref ======
+\usepackage[hidelinks, breaklinks, colorlinks=true,
+            linkcolor=citationcolor, citecolor=citationcolor,
+            urlcolor=citationcolor]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% Footnote settings
+\interfootnotelinepenalty=10000
+\setlength{\footnotesep}{0.5cm}

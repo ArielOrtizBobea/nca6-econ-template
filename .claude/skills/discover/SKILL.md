@@ -1,7 +1,7 @@
 ---
 name: discover
-description: Discovery phase combining research interviews, literature search, data discovery, and ideation. Routes to appropriate agents based on arguments. Replaces /interview-me, /lit-review, /find-data, /research-ideation.
-argument-hint: "[mode: interview | lit | data | ideate] [topic or query]"
+description: Discovery phase combining research interviews, literature search, anchor-driven bridge search (for NCA6 coauthors), data discovery, and ideation. Routes to appropriate agents based on arguments.
+argument-hint: "[mode: interview | lit | anchor | data | ideate] [topic or query]"
 allowed-tools: Read,Grep,Glob,Write,Edit,WebSearch,WebFetch,Task
 ---
 
@@ -16,17 +16,23 @@ Launch the Discovery phase of research. Routes to the appropriate agents based o
 ## Modes
 
 ### Default (no mode specified)
-If no mode keyword is given, start with an interactive interview to build the research specification.
+
+If no mode keyword is given:
+- If `master_supporting_docs/anchors/anchor-index.md` exists AND no `quality_reports/aspect_spec_*.md` exists, this is likely an NCA6 coauthor on their first run — load `interview-nca6.md` from this skill directory and follow its NCA6 interview protocol.
+- Otherwise, start with the standard interactive interview below.
 
 ### `/discover interview [topic]` — Research Interview
-Conduct a structured conversational interview to formalize a research idea.
+
+**NCA6 coauthor variant:** If `master_supporting_docs/anchors/anchor-index.md` exists, this template is configured for NCA6 economist coauthors. Load `interview-nca6.md` from this directory and follow its two-axis interview protocol. The output is an aspect spec (subfield + climate-economics slice) saved to `quality_reports/aspect_spec_[coauthor].md` — the input to `/discover anchor`.
+
+**Standard variant (non-NCA6):** Conduct a structured conversational interview to formalize a research idea.
 
 **This is conversational.** Ask questions directly in your text responses, one or two at a time. Wait for the user to respond before continuing. Do NOT use AskUserQuestion.
 
 **Agents:** Direct conversation (no agent dispatch)
 **Output:** Research specification + domain profile
 
-Interview structure:
+Standard interview structure:
 1. **Big Picture** (1-2 questions): "What phenomenon are you trying to understand?" "Why does this matter?"
 2. **Theoretical Motivation** (1-2 questions): "What's your intuition for why X happens?" "What would standard theory predict?"
 3. **Data and Setting** (1-2 questions): "What data do you have access to?" "Is there a specific institutional setting?"
@@ -105,6 +111,31 @@ Output format for each paper:
 - **Relevance:** [why it matters for our research]
 ```
 
+### `/discover anchor` — Bridge Anchor Literature Search (NCA6 coauthors)
+
+Run a bridge-aware literature search anchored on review documents (NCA5 econ chapter, IPCC AR6 econ chapters, and any coauthor-supplied anchors). This mode is the canonical entry point for an NCA6 economist coauthor.
+
+**Agents:** Librarian in Bridge Anchor Mode → librarian-critic (Mode B checks)
+
+**Inputs (auto-discovered, no args needed in the common case):**
+- `quality_reports/aspect_spec_[coauthor].md` — produced by `/discover interview`
+- `master_supporting_docs/anchors/anchor-index.md` — pre-loaded + coauthor-supplied anchors
+- `.claude/references/domain-profile.md` — Bridge Reference Table and NCA vocabulary
+- `Bibliography_base.bib` — existing citations
+
+**Output:** `quality_reports/literature/[coauthor]/` containing:
+- `bridge_review.md` — annotated bibliography organized by anchor section
+- `references.bib` — BibTeX (unverified entries marked `% UNVERIFIED`)
+- `staleness_flags.md` — anchor claims with `CONFIRMED` / `EXTENDED` / `CONTESTED` / `OPEN` labels
+- `adjacent_surfacing.md` — papers from adjacent subfields the coauthor may not be tracking
+- `frontier_map.md` — where the bridge stands now
+- `positioning.md` — suggested framing for the NCA6 contribution
+
+**Protocol:** Load `anchor-mode.md` from this skill directory and follow it. The full orchestration — pre-flight checks, anchor weighting, Librarian dispatch prompt, critic loop — lives there.
+
+**Pre-flight failure:** If no aspect spec exists, halt and instruct:
+> "No aspect spec found. Run `/discover interview` first — that elicits your subfield and chosen slice. Then re-run `/discover anchor`."
+
 ### `/discover data [requirements]` — Data Discovery
 Find and assess datasets for the research question.
 
@@ -170,3 +201,5 @@ Generate:
 - **5-point data critique:** Measurement validity, sample selection, external validity, identification compatibility, known issues. Never skip this.
 - **Domain-profile aware:** Always read `.claude/references/domain-profile.md` first for field calibration.
 - **Worker-critic pairing:** Librarian + librarian-critic, Explorer + explorer-critic. Never skip the critic.
+- **Bridge discipline (anchor mode):** In `/discover anchor`, every paper must connect the coauthor's subfield to the anchor scope. Generic subfield work without climate content, and generic climate work without subfield engagement, both fail the bridge test.
+- **Anchor honesty:** If an anchor URL cannot be fetched, note the gap in the output. Do not fabricate anchor content or invent claims attributed to anchors.

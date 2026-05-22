@@ -52,14 +52,31 @@ These are non-negotiable. Every agent checks against them. Violations are deduct
 
 **INV-21.** Every claim on a slide is traceable to the paper. No orphan results or numbers that don't appear in the manuscript.
 
+## NCA6 Chapter Contributions
+
+These invariants apply when the paper format is an NCA6 chapter contribution (`paper/sections/contributions/*.tex` files using the NCA6 preamble). They do NOT apply to standalone working papers.
+
+**INV-22.** Every Key Message (`keymessage` environment) carries a `\confidence{level}` label using the NCA confidence ladder (very high / high / medium / low).
+
+**INV-23.** Every probabilistic Key Message also carries a `\likelihood{level}` label using the NCA likelihood ladder (virtually certain / very likely / likely / as likely as not / unlikely / very unlikely / exceptionally unlikely).
+
+**INV-24.** Every Key Message has a Traceable Account (`\traceableaccount` paragraph) mapping each claim in the KM to one or more citations. No orphan KM claims.
+
+**INV-25.** Every anchor cited in a contribution (NCA5 Ch.19, IPCC AR6 econ chapters, IPCC SR1.5, coauthor-supplied anchors listed in `master_supporting_docs/anchors/anchor-index.md`) must have a corresponding BibTeX entry in `Bibliography_base.bib`.
+
+**INV-26.** Confidence and likelihood assignments must be justified — every KM with a confidence label has a `\confidencedesc` paragraph explaining why (strength of evidence × consensus). Every KM with a likelihood label has a `\likelihooddesc` paragraph.
+
+**INV-27.** A contribution's NCA elements appear in this order per KM: `keymessage` block → `\evidencebase` → `\uncertainties` → `\confidencedesc` → (optional) `\likelihooddesc` → `\traceableaccount`. The writer-critic checks ordering.
+
 ---
 
 ## How Agents Use This File
 
 | Agent | Checks | Action on Violation |
 |-------|--------|-------------------|
-| **writer-critic** | INV-1 through INV-13 | Deduct per scoring rubric |
+| **writer-critic** | INV-1 through INV-13, INV-22 through INV-27 (when format = NCA6) | Deduct per scoring rubric |
 | **coder-critic** | INV-13 through INV-19 | Deduct per scoring rubric |
 | **storyteller-critic** | INV-20, INV-21 | Deduct per scoring rubric |
-| **verifier** | INV-9, INV-10, INV-14, INV-15, INV-16, INV-19 | FAIL if present |
+| **verifier** | INV-9, INV-10, INV-14, INV-15, INV-16, INV-19, INV-25 | FAIL if present |
 | **lint hook** | INV-14, INV-15, INV-16, INV-19 | Advisory warning |
+| **librarian-critic** | INV-25 (anchors cited must be in bib) | Deduct per scoring rubric |

@@ -57,3 +57,7 @@ paper/quarto/.quarto/
 # *.rds
 # output/**/*.rds
 docs/
+
+# Anchor cache — fetched anchor content (don't bloat repo with PDFs)
+master_supporting_docs/anchors/cache/*
+!master_supporting_docs/anchors/cache/.gitkeep

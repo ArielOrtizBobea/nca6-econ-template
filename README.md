@@ -1,71 +1,114 @@
-# Empirical Research Template
+# NCA6 Economist-Coauthor Template
 
-A reproducible-research scaffold for empirical work in economics and adjacent fields (finance, accounting, marketing, management). Designed for use with Claude Code, but the LaTeX scaffolding, folder structure, and quality conventions are useful on their own.
+A Claude Code scaffold for **economists writing literature-review contributions to NCA6 chapters**. Bridges the coauthor's econ subfield (labor, health, trade, public, IO, macro, development, environmental, finance, ...) with the climate-economics anchors (NCA5 Ch.19, IPCC AR6 econ chapters, plus any anchors the coauthor adds).
 
-## What This Template Provides
+**The core idea:** your literature search starts from an authoritative anchor, not from a blank query. The anchor gives you the prior state of knowledge, seed citations, claim list, NCA/IPCC vocabulary, and scope frame. The new `/discover anchor` skill intersects this with your econ subfield to surface the *bridge* — what a labor economist, or a trade economist, or a public economist actually needs to read to contribute their lens to NCA6.
 
-- **Paper scaffold** — a working `paper/` directory with `latexmkrc`, a standardized preamble, and slots for sections, tables, figures, supplementary material, talks, and a replication package.
-- **Bibliography** — single `Bibliography_base.bib` as the source of truth, with `biblatex` + `biber` configured.
-- **Analysis scaffold** — `scripts/` for R, Python, or Julia, plus `data/` (`raw/` and `cleaned/`) with `.gitkeep` placeholders.
-- **Claude Code integration** — agents, skills, rules, and hooks under `.claude/` that orchestrate a research pipeline: discovery → strategy → execution → write → review → submission. Standalone use is fine; pipeline use is optional.
-- **Quality gates** — a weighted aggregate score with thresholds for commit, PR, and submission. See `.claude/rules/quality.md`.
-- **GitHub Actions CI** — `paper/main.tex` compiles automatically on push.
+---
 
-## Getting Started
+## Quickstart (if you already use Claude Code)
 
-1. Click "Use this template" on GitHub to create your own copy.
-2. Fill in the bracketed placeholders in `CLAUDE.md` (project name, institution, field).
-3. Optionally edit `.claude/references/domain-profile.md` and `journal-profiles.md` to reflect your field.
-4. If using Claude Code: open the repo and run `/discover interview [your topic]` to kick off a research specification.
-5. If not using Claude Code: the LaTeX scaffolding, folder structure, and quality rules still work standalone.
+```bash
+# Fork the template and clone your fork
+gh repo fork ArielOrtizBobea/economics-research-template --clone
+cd economics-research-template
 
-## Folder Structure
+# Open Claude Code
+claude
+```
+
+Then:
+
+```
+/discover interview          # two-axis conversation: your subfield + your slice
+/discover anchor             # bridge literature search
+```
+
+Outputs land in `quality_reports/literature/[you]/`. Done in two commands.
+
+---
+
+## New to Claude Code? Read the guide
+
+If this is your first time, open **[NCA6_COAUTHOR_GUIDE.md](NCA6_COAUTHOR_GUIDE.md)** — it walks you through:
+
+- Installing Claude Code
+- Forking and opening the repo
+- Running the interview and anchor commands
+- Reviewing the output
+- Drafting your NCA6 section
+
+The guide assumes no prior experience. It also explains what an anchor is and why this template works the way it does.
+
+---
+
+## What this template provides
+
+- **Two-axis interview** (`/discover interview`) — captures your econ subfield and your chosen climate-economics slice into an aspect spec.
+- **Bridge anchor search** (`/discover anchor`) — runs the Librarian in Bridge Anchor Mode: anchors weighted by subfield, forward-citation snowball from seed citations, claim-staleness flags, adjacent-subfield surfacing.
+- **Pre-loaded anchors** — seven climate-economics chapters from NCA5 and IPCC AR6 (see [`master_supporting_docs/anchors/anchor-index.md`](master_supporting_docs/anchors/anchor-index.md)). Coauthors can add their own.
+- **NCA6 chapter scaffold** — `paper/sections/contributions/_template.tex` carries Key Messages + Description of Evidence Base + Major Uncertainties + Description of Confidence + Description of Likelihood + Traceable Accounts. Multi-coauthor chapter shell in `paper/main.tex`.
+- **Worker-critic quality gates** — every creator agent (Librarian, Writer, Coder) has a paired critic. Nothing ships below 80/100. See [`.claude/rules/quality.md`](.claude/rules/quality.md).
+- **General-economics fallback** — `/discover lit [topic]` and the standard research pipeline still work if your task isn't anchor-driven.
+
+---
+
+## Folder structure
 
 ```
 .
-├── CLAUDE.md                    # Project-level instructions for Claude Code
-├── MEMORY.md                    # Auto-managed learning index
-├── CHANGELOG.md                 # Template version history
-├── Bibliography_base.bib        # Single source of truth for references
-├── paper/                       # LaTeX manuscript (source of truth)
-│   ├── main.tex                 # Primary paper (create this)
-│   ├── sections/                # Section-level .tex files
-│   ├── figures/                 # Generated figures
-│   ├── tables/                  # Generated tables
-│   ├── talks/                   # Beamer presentations
-│   ├── preambles/               # Shared preamble
-│   ├── quarto/                  # Quarto RevealJS presentations
-│   ├── supplementary/           # Online appendix
-│   └── replication/             # Replication package for deposit
-├── data/
-│   ├── raw/                     # Original untouched data (often gitignored)
-│   └── cleaned/                 # Processed datasets
-├── scripts/                     # Analysis code (R, Python, Julia)
-├── quality_reports/             # Plans, session logs, reviews, scores
-├── explorations/                # Research sandbox
-├── templates/                   # Session log, requirements-spec templates
-├── master_supporting_docs/      # Reference papers and data documentation
-└── guide/                       # Quarto user guide (rendered to docs/)
+├── CLAUDE.md                    # Project instructions Claude reads each session
+├── NCA6_COAUTHOR_GUIDE.md       # Step-by-step onboarding
+├── README.md                    # This file
+├── .claude/                     # Agents, skills, rules, references, hooks
+├── Bibliography_base.bib        # Bibliography (sync canonical + add your own)
+├── paper/                       # NCA6 chapter manuscript
+│   ├── main.tex                 # Chapter shell
+│   ├── sections/contributions/  # Per-coauthor sections
+│   └── ...
+├── master_supporting_docs/anchors/
+│   ├── README.md                # What is an anchor + how to add yours
+│   ├── anchor-index.md          # Pre-loaded + coauthor-supplied anchors
+│   └── cache/                   # Fetched anchor content (gitignored)
+├── quality_reports/             # Aspect specs, lit output, reviews
+├── scripts/                     # Optional analysis code
+└── data/                        # Optional data (raw/ and cleaned/)
 ```
 
-## Compiling the Paper
+---
 
-```bash
-cd paper && latexmk main.tex     # Multi-pass + biber handled by latexmk
-cd paper && latexmk -c           # Clean auxiliary files
-```
+## Prerequisites
 
-On Overleaf, set the compiler to XeLaTeX via Menu — Overleaf reads `latexmkrc` automatically.
+| Tool | Required for | How |
+|------|--------------|-----|
+| [Claude Code](https://docs.claude.com/en/docs/claude-code) | The workflow itself | `npm install -g @anthropic-ai/claude-code` |
+| [gh CLI](https://cli.github.com/) | Forking and committing | `brew install gh` (macOS) |
+| XeLaTeX | Paper compilation | [TeX Live](https://tug.org/texlive/) or [MacTeX](https://tug.org/mactex/) |
 
-## Customizing for Your Field
+Optional: R/Python/Julia for analysis, [Quarto](https://quarto.org) for slides.
 
-The template defaults to economics conventions but is field-agnostic. Two files do most of the customization:
+---
 
-- `.claude/references/domain-profile.md` — your field's methods, journals, and conventions.
-- `.claude/references/journal-profiles.md` — target journals' formatting requirements.
+## What an anchor is
 
-Both ship with bracketed placeholders. Fill them in once and the agents will use them.
+An anchor is a review-style document — usually a chapter from NCA5, IPCC AR6, or a major handbook/JEL survey — that drives your literature search by providing:
+
+1. **Prior state of knowledge** at the cutoff date
+2. **Seed citations** for forward-snowball
+3. **Claim list** testable against post-cutoff lit
+4. **Confidence/likelihood vocabulary** (NCA/IPCC standard)
+5. **Scope frame**
+
+Without an anchor your search is unfocused. With one, it's directional. See [`master_supporting_docs/anchors/README.md`](master_supporting_docs/anchors/README.md) for the full explainer and instructions on adding subfield-specific anchors.
+
+---
 
 ## License
 
-[Choose a license. MIT and Apache-2.0 are common defaults.]
+MIT. Fork, customize, share.
+
+---
+
+## Origin and related work
+
+Built on the [clo-author](https://github.com/hugosantanna/clo-author) scaffold (Hugo Sant'Anna), which itself builds on Pedro Sant'Anna's [claude-code-my-workflow](https://github.com/pedrohcgs/claude-code-my-workflow). This template specializes those general-research-workflow tools for NCA6 economist coauthors via the anchor-driven bridge search.
