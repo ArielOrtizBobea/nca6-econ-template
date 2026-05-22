@@ -5,11 +5,14 @@
 **Coauthor:** Jane Doe (mock)
 **Subfield:** Labor economics (methods: reduced-form panel, IV, regression discontinuity)
 **Slice:** Climate effects on US labor supply and earnings — especially heat exposure on hours worked, occupational sorting, and earnings dispersion
-**Anchors used (with weights):**
-- `nca5_ch19_economics` — weight 5 (labor sections, aggregate impacts)
-- `ipcc_ar6_wg2_ch16_keyrisks` — weight 4 (labor risk subsections)
-- `ipcc_ar6_wg2_ch17_decisions` — weight 2 (policy framing)
-- `ipcc_ar6_wg3_ch3_pathways` — weight 1 (low — methods don't match)
+
+**Anchors Jane chose** (and the weights `/discover anchor` assigned given her aspect spec):
+- IPCC AR6 WG2 Ch.16 — Key Risks Across Sectors and Regions — weight 5 (labor risk subsections heavily relevant)
+- IPCC AR6 WG2 Ch.17 — Decision-Making Options for Managing Risk — weight 2 (light policy framing)
+- IPCC AR6 WG3 Ch.3 — Mitigation Pathways — weight 1 (low; her methods don't match IAM literature)
+- *Annual Review of Resource Economics* survey on environment-and-labor (coauthor-supplied) — weight 5
+
+*Note: anchors are coauthor-supplied via `/discover interview`. The set above is what a labor economist might choose — not a default. Your anchor set will reflect your subfield.*
 
 **Date:** 2026-05-22
 

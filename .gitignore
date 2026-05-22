@@ -18,7 +18,10 @@
 *.run.xml
 *-blx.bib
 
-# Compiled PDFs (uncomment to track specific PDFs)
+# Compiled PDFs — build artifacts, not tracked
+paper/main.pdf
+paper/talks/*.pdf
+# (uncomment below to track all PDFs if you want to commit the compiled chapter)
 # *.pdf
 
 # Python
